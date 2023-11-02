@@ -14,7 +14,6 @@
 <% end %>
 
 <ul>
-
   <li>
     <strong>Name:</strong>
     <%= @passport.name %>
@@ -34,8 +33,12 @@
     <strong>County:</strong>
     <%= @passport.county %>
   </li>
-
 </ul>
 
-<span><%= live_patch "Edit", to: Routes.passport_show_path(@socket, :edit, @passport), class: "button" %></span> |
-<span><%= live_redirect "Back", to: Routes.passport_index_path(@socket, :index) %></span>
+<span>
+  <%= live_patch("Edit",
+    to: Routes.passport_show_path(@socket, :edit, @passport),
+    class: "button"
+  ) %>
+</span> |
+<span><%= live_redirect("Back", to: Routes.passport_index_path(@socket, :index)) %></span>

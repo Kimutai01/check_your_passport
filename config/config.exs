@@ -25,14 +25,17 @@ config :check_your_passport, CheckYourPassportWeb.Endpoint,
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
 
-config :tailwind, version: "3.3.5", default: [
-  args: ~w(
+config :tailwind,
+  version: "3.3.5",
+  default: [
+    args: ~w(
     --config=tailwind.config.js
     --input=css/app.css
     --output=../priv/static/assets/app.css
   ),
-  cd: Path.expand("../assets", __DIR__)
-]
+    cd: Path.expand("../assets", __DIR__)
+  ]
+
 config :check_your_passport, CheckYourPassport.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.

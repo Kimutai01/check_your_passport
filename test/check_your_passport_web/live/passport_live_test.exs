@@ -4,8 +4,18 @@ defmodule CheckYourPassportWeb.PassportLiveTest do
   import Phoenix.LiveViewTest
   import CheckYourPassport.PassportsFixtures
 
-  @create_attrs %{name: "some name", date: "some date", tracking_number: "some tracking_number", county: "some county"}
-  @update_attrs %{name: "some updated name", date: "some updated date", tracking_number: "some updated tracking_number", county: "some updated county"}
+  @create_attrs %{
+    name: "some name",
+    date: "some date",
+    tracking_number: "some tracking_number",
+    county: "some county"
+  }
+  @update_attrs %{
+    name: "some updated name",
+    date: "some updated date",
+    tracking_number: "some updated tracking_number",
+    county: "some updated county"
+  }
   @invalid_attrs %{name: nil, date: nil, tracking_number: nil, county: nil}
 
   defp create_passport(_) do

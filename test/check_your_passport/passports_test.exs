@@ -21,7 +21,12 @@ defmodule CheckYourPassport.PassportsTest do
     end
 
     test "create_passport/1 with valid data creates a passport" do
-      valid_attrs = %{name: "some name", date: "some date", tracking_number: "some tracking_number", county: "some county"}
+      valid_attrs = %{
+        name: "some name",
+        date: "some date",
+        tracking_number: "some tracking_number",
+        county: "some county"
+      }
 
       assert {:ok, %Passport{} = passport} = Passports.create_passport(valid_attrs)
       assert passport.name == "some name"
@@ -36,7 +41,13 @@ defmodule CheckYourPassport.PassportsTest do
 
     test "update_passport/2 with valid data updates the passport" do
       passport = passport_fixture()
-      update_attrs = %{name: "some updated name", date: "some updated date", tracking_number: "some updated tracking_number", county: "some updated county"}
+
+      update_attrs = %{
+        name: "some updated name",
+        date: "some updated date",
+        tracking_number: "some updated tracking_number",
+        county: "some updated county"
+      }
 
       assert {:ok, %Passport{} = passport} = Passports.update_passport(passport, update_attrs)
       assert passport.name == "some updated name"

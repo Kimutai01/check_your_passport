@@ -5,13 +5,34 @@ defmodule CheckYourPassportWeb.PassportLive.Index do
   alias CheckYourPassport.Passports.Passport
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, :passports, list_passports())}
+  def mount(params, _session, socket) do
+    passports = Passports.paginate_passports(params).entries
+    total_pages = Passports.paginate_passports(params).total_pages
+    page_number = Passports.paginate_passports(params).page_number
+    total_entries = Passports.paginate_passports(params).total_entries
+
+    {:ok,
+     socket
+     |> assign(:passports, passports)
+     |> assign(:total_pages, total_pages)
+     |> assign(:page_number, page_number)
+     |> assign(:total_entries, total_entries)}
   end
 
   @impl true
   def handle_params(params, _url, socket) do
-    {:noreply, apply_action(socket, socket.assigns.live_action, params)}
+    passports = Passports.paginate_passports(params).entries
+    total_pages = Passports.paginate_passports(params).total_pages
+    page_number = Passports.paginate_passports(params).page_number
+    total_entries = Passports.paginate_passports(params).total_entries
+
+    {:noreply,
+     socket
+     |> assign(:passports, passports)
+     |> assign(:total_pages, total_pages)
+     |> assign(:page_number, page_number)
+     |> assign(:total_entries, total_entries)
+     |> apply_action(socket.assigns.live_action, params)}
   end
 
   defp apply_action(socket, :edit, %{"id" => id}) do

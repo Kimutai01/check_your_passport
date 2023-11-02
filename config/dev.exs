@@ -2,7 +2,6 @@ import Config
 
 # Configure your database
 config :check_your_passport, CheckYourPassport.Repo,
-
   hostname: "localhost",
   database: "check_your_passport_dev",
   stacktrace: true,

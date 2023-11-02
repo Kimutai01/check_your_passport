@@ -1,13 +1,49 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Allura&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.poppins-light {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 300;
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
 
 /* This file is for your main application CSS */
 
+.pie {
+  width: 100% !important;
+  height: 300px !important;
+}
+
+html {
+  scroll-behavior: smooth !important;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+.bar {
+  width: 100% !important;
+  height: 400px !important;
+}
 /* Alerts and form errors used by phx.new */
 .alert {
   padding: 15px;
-  margin-bottom: 20px;
+  position: fixed;
+  top: 0;
+
+  left: 50%;
+  transform: translateX(-50%);
+
   border: 1px solid transparent;
   border-radius: 4px;
 }
@@ -70,7 +106,7 @@
   margin: 15vh auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 60%;
 }
 
 .phx-modal-close {
@@ -102,6 +138,11 @@
   animation: 0.2s ease-out 0s normal forwards 1 fade-out-keys;
 }
 
+@media screen and (max-width: 768px) {
+  .phx-modal-content {
+    width: 90%;
+  }
+}
 @keyframes fade-in-scale-keys {
   0% {
     scale: 0.95;
@@ -140,4 +181,66 @@
   100% {
     opacity: 0;
   }
+}
+
+.transparent {
+  transition: background-color 0.5s ease-in-out;
+}
+
+h1 {
+  text-align: center;
+}
+
+#reader {
+  width: 500px;
+}
+
+.result {
+  background-color: green;
+  color: #fff;
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+}
+
+#reader__scan_region {
+  background: white;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  position: relative;
+  background-color: transparent !important;
+  padding: 25px !important;
+  font-size: 5px !important;
+
+  color: white !important;
+  margin: 20px !important;
+
+  box-sizing: border-box !important;
+  width: 40px !important;
+  height: 40px !important;
+  margin: 10px !important;
+  line-height: 0 !important;
+  z-index: 1;
+}
+
+.swiper-button-next::before,
+.swiper-button-prev::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  background-color: black;
+  z-index: -1;
+}
+
+.swiper-button-prev::before {
+  transform: translate(-50%, -50%) rotate(-135deg);
 }

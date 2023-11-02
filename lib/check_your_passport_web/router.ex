@@ -20,11 +20,11 @@ defmodule CheckYourPassportWeb.Router do
     get "/", PageController, :index
 
     live "/passports", PassportLive.Index, :index
-  live "/passports/new", PassportLive.Index, :new
-  live "/passports/:id/edit", PassportLive.Index, :edit
+    live "/passports/new", PassportLive.Index, :new
+    live "/passports/:id/edit", PassportLive.Index, :edit
 
-  live "/passports/:id", PassportLive.Show, :show
-  live "/passports/:id/show/edit", PassportLive.Show, :edit
+    live "/passports/:id", PassportLive.Show, :show
+    live "/passports/:id/show/edit", PassportLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
@@ -39,7 +39,6 @@ defmodule CheckYourPassportWeb.Router do
   # If your application does not have an admins-only section yet,
   # you can use Plug.BasicAuth to set up some basic authentication
   # as long as you are also using SSL (which you should anyway).
-
 
   if Mix.env() in [:dev, :test] do
     import Phoenix.LiveDashboard.Router

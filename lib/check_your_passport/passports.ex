@@ -21,6 +21,10 @@ defmodule CheckYourPassport.Passports do
     Repo.all(Passport)
   end
 
+  def paginate_passports(params) do
+    Repo.paginate(Passport, params)
+  end
+
   @doc """
   Gets a single passport.
 
