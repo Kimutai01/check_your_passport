@@ -25,7 +25,8 @@ config :check_your_passport, CheckYourPassportWeb.Endpoint,
   secret_key_base: "2N3Zn/oHB+Q+bGDuNaT+o/ckqyAkz90bIZX01cMAmPJq2SaMaXT+4iBuBWAVgZoC",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support
