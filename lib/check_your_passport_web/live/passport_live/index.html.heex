@@ -1,0 +1,45 @@
+<h1>Listing Passports</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.passport_index_path(@socket, :index)}>
+    <.live_component
+      module={CheckYourPassportWeb.PassportLive.FormComponent}
+      id={@passport.id || :new}
+      title={@page_title}
+      action={@live_action}
+      passport={@passport}
+      return_to={Routes.passport_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Tracking number</th>
+      <th>County</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="passports">
+    <%= for passport <- @passports do %>
+      <tr id={"passport-#{passport.id}"}>
+        <td><%= passport.name %></td>
+        <td><%= passport.date %></td>
+        <td><%= passport.tracking_number %></td>
+        <td><%= passport.county %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.passport_show_path(@socket, :show, passport) %></span>
+          <span><%= live_patch "Edit", to: Routes.passport_index_path(@socket, :edit, passport) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: passport.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Passport", to: Routes.passport_index_path(@socket, :new) %></span>

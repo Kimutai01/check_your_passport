@@ -1,0 +1,41 @@
+<h1>Show Passport</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.passport_show_path(@socket, :show, @passport)}>
+    <.live_component
+      module={CheckYourPassportWeb.PassportLive.FormComponent}
+      id={@passport.id}
+      title={@page_title}
+      action={@live_action}
+      passport={@passport}
+      return_to={Routes.passport_show_path(@socket, :show, @passport)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @passport.name %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @passport.date %>
+  </li>
+
+  <li>
+    <strong>Tracking number:</strong>
+    <%= @passport.tracking_number %>
+  </li>
+
+  <li>
+    <strong>County:</strong>
+    <%= @passport.county %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.passport_show_path(@socket, :edit, @passport), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.passport_index_path(@socket, :index) %></span>

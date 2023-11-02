@@ -2,8 +2,7 @@ import Config
 
 # Configure your database
 config :check_your_passport, CheckYourPassport.Repo,
-  username: "postgres",
-  password: "postgres",
+
   hostname: "localhost",
   database: "check_your_passport_dev",
   stacktrace: true,
